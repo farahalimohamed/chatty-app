@@ -57,4 +57,23 @@ export const login = async (req, res) => {
         }
 
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
-        if(!isPasswor
+        if(!isPasswordCorrect){
+            return res.status(400).json({message: "Invalid credentials"});
+        } else {
+            generateToken(user._id, res);
+            return res.status(200).json({
+                _id: user._id,
+                fullName: user.fullName,
+                email: user.email,
+                profilePic: user.profilePic
+            })
+        }
+    } catch(error){
+        console.log("Error in login controller", error.message);
+        return res.status(500).json({message: "Internal Server error"});
+    }
+}
+
+export const logout = (req, res) => {
+    res.send("Logout Route")
+}
