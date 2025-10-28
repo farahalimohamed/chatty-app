@@ -62,7 +62,7 @@ export const login = async (req, res) => {
         }
 
         generateToken(user._id, res);
-        
+
         res.status(200).json({
             _id: user._id,
             fullName: user.fullName,
@@ -84,3 +84,5 @@ export const logout = (req, res) => {
         res.status(500).json({message: "Internal Server error"});
     }
 }
+
+export const updateProfile = async (req, res) => {}
