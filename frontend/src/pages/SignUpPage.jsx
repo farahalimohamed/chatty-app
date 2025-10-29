@@ -3,6 +3,7 @@ import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-re
 import { useAuthStore } from "../store/useAuthStore";
 import { Link } from "react-router-dom";
 import AuthImagePattern from "../components/AuthImagePattern";
+import toast from "react-hot-toast";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,10 +15,33 @@ const SignUpPage = () => {
 
   const { signup, isSigningUp } = useAuthStore();
 
-  const validateForm = () => {};
+  const validateForm = () => {
+    if(!formData.fullName.trim()){
+      return toast.error("Full Name is required");
+    }
+    if(!formData.email.trim()){
+      return toast.error("Email is required");
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      return toast.error("Email is invalid");
+    }
+    if(!formData.password){
+      return toast.error("Password is required");
+    }
+    if(formData.password.length < 6){
+      return toast.error("Password must be at least 6 characters");
+    }
+    return true;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    const success = validateForm();
+
+    if (success === true) {
+      return signup(formData);
+    }
   };
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
@@ -47,11 +71,11 @@ const SignUpPage = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="size-5 text-base-content/40" />
+                  <User className="size-5 text-base-content/40 z-10" />
                 </div>
                 <input
                   type="text"
-                  className={`input input-bordered w-full pl-10`}
+                  className={`input input-bordered w-full pl-10 focus:outline-none focus:ring-0 focus:border-primary`}
                   placeholder="John Doe"
                   value={formData.fullName}
                   onChange={(e) =>
@@ -67,11 +91,11 @@ const SignUpPage = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="size-5 text-base-content/40" />
+                  <Mail className="size-5 text-base-content/40 z-10" />
                 </div>
                 <input
                   type="email"
-                  className={`input input-bordered w-full pl-10`}
+                  className={`input input-bordered w-full pl-10 focus:outline-none focus:ring-0 focus:border-primary`}
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) =>
@@ -87,11 +111,11 @@ const SignUpPage = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="size-5 text-base-content/40" />
+                  <Lock className="size-5 text-base-content/40 z-10" />
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
-                  className={`input input-bordered w-full pl-10`}
+                  className={`input input-bordered w-full pl-10 focus:outline-none focus:ring-0 focus:border-primary`}
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={(e) =>
@@ -104,9 +128,9 @@ const SignUpPage = () => {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOff className="size-5 text-base-content/40" />
+                    <EyeOff className="size-5 text-base-content/40 z-10" />
                   ) : (
-                    <Eye className="size-5 text-base-content/40" />
+                    <Eye className="size-5 text-base-content/40 z-10" />
                   )}
                 </button>
               </div>
