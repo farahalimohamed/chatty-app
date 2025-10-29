@@ -8,12 +8,19 @@ const MessageInput = () => {
     const [imagePreview, setImagePreview] = useState(null);
     const fileInputRef = useRef(null);
     const {sendMessage} = useChatStore();
+    const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if(!file.type.startsWith('image/')) {
             toast.error("Please select a valid image file");
             return;
+        }
+
+        if (file.size > MAX_IMAGE_SIZE) {
+          toast.error("Image too large! Please choose an image under 2MB");
+          e.target.value = ""; 
+          return;
         }
 
         const reader = new FileReader();
