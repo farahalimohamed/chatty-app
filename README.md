@@ -25,15 +25,11 @@ A **real-time chat application** built using the **MERN stack** (MongoDB, Expres
 | **Socket.io**  | Real-time Bidirectional Communication |
 
 ---
-
 ## 📸 Demo
 
-Here's a live demo of the app in action:
+[![Watch Chatty App in Action](https://img.youtube.com/vi/HEy-1oG65bs/maxresdefault.jpg)](https://youtu.be/HEy-1oG65bs)
 
-![Chatty App Demo](https://youtu.be/HEy-1oG65bs)
-
-> *Demo recorded by [@farahalimohamed](https://github.com/farahalimohamed)*
-
+> *Real-time chat demo recorded by [@farahalimohamed](https://github.com/farahalimohamed)*
 ---
 
 ## 🏃‍♀️ How to Run Locally
