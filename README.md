@@ -30,7 +30,7 @@ A **real-time chat application** built using the **MERN stack** (MongoDB, Expres
 
 Here's a live demo of the app in action:
 
-![Chatty App Demo](https://github.com/user-attachments/assets/98a194ce-ad3b-4692-ab5c-a11cba3b36a2)
+![Chatty App Demo](https://youtu.be/HEy-1oG65bs)
 
 > *Demo recorded by [@farahalimohamed](https://github.com/farahalimohamed)*
 
