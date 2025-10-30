@@ -4,6 +4,7 @@ import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import MessageSkeleton from "./skeletons/MessageSkeleton";
 import { useAuthStore } from "../store/useAuthStore";
+import { formatMessageTime } from "../lib/utils";
 
 const ChatContainer = () => {
   const { selectedUser, messages, getMessages, isMessagesLoading } =
@@ -50,10 +51,10 @@ const ChatContainer = () => {
             </div>
             <div className="chat-header mb-1">
               <time className="text-sm opacity-50 ml-1">
-                {message.createdAt}
+                {formatMessageTime(message.createdAt)}
               </time>
             </div>
-            <div className="chat-bubble flex">
+            <div className="chat-bubble flex flex-col">
               {message.image && (
                 <img
                   src={message.image}
