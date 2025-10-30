@@ -30,11 +30,3 @@ A **real-time chat application** built using the **MERN stack** (MongoDB, Expres
 [![Watch Chatty App in Action](https://img.youtube.com/vi/HEy-1oG65bs/maxresdefault.jpg)](https://youtu.be/HEy-1oG65bs)
 
 > *Real-time chat demo recorded by [@farahalimohamed](https://github.com/farahalimohamed)*
----
-
-## 🏃‍♀️ How to Run Locally
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/farahalimohamed/chatty-app.git
-   cd chatty-app
